@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Configuring a read-only user in Tomcat add JMX authentification 
+title: Configuring a read-only user in Tomcat to add JMX authentification 
 ---
 
 > The goal is to configure the Tomcat startup script in order to create a readonly user to read data from the JMX interface.
@@ -26,12 +26,14 @@ CATALINA_OPTS="$CATALINA_OPTS
 
 ## 2. Create the access and password file
 Here we create the jmxremote.access to add a monitorZabbix user with readonly permission. We adjust the rights so only tomcat can read it.
+
 ``` bash
 cd $CATALINA_HOME/conf
 echo "monitorZabbix readonly" > jmxremote.access && chmod 400 jmxremote.access && chown tomcat:tomcat jmxremote.access
 ``` 
 
 Here we create the jmxremote.password to define the password for the monitorZabbix user declared previously. We adjust the rights so only tomcat can read it.
+
 ``` bash
 cd $CATALINA_HOME/conf
 echo "monitorZabbix PASSWORD" > jmxremote.password && chmod 400 jmxremote.password && chown tomcat:tomcat jmxremote.password
@@ -39,6 +41,7 @@ echo "monitorZabbix PASSWORD" > jmxremote.password && chmod 400 jmxremote.passwo
 ## 3. Declaring the user in Zabbix
 
 On the host screen, create the two following macros. If needed/wanted you can declare them on the template level.
+
 ``` bash
 {$JMX_USER_NAME} = monitorZabbix
 {$JMX_PASSWORD} = PASSWORD
