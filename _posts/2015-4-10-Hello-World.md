@@ -3,4 +3,4 @@ layout: post
 title: Hello World!
 ---
 
-Bienvenue sur mon blog technique !
+Welcome to my humble technical blog. I will post here some interesting tidbits I find. I hope you'll enjoy your visit here !
